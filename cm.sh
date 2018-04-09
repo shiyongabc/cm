@@ -119,7 +119,7 @@ etc_sysctlconf="sed -i '/^# For more information/ s:.*:vm.swappiness=10\n:' /etc
 cloudera_scm_server="sed -i '/^CMF_DEFAULTS=\${CMF_DEFAULTS/ s:.*:CMF_DEFAULTS=/opt/cm-5.13.1/etc/default\n:' /opt/cm-5.13.1/etc/init.d/cloudera-scm-server " 
 cloudera_scm_agent="sed -i '/^CMF_DEFAULTS=\${CMF_DEFAULTS/ s:.*:CMF_DEFAULTS=/opt/cm-5.13.1/etc/default\n:' /opt/cm-5.13.1/etc/init.d/cloudera-scm-agent " 
 mkdir -p /root/rpm && mkdir -p /root/parcel-repo
-docker run --rm  -v /root/rpm:/opt/cloudera/rpm  -v /root/parcel-repo:/opt/cloudera/parcel-repo  registry.cn-shenzhen.aliyuncs.com/xuybin/cm
+docker run --rm  -v /root/rpm:/opt/cloudera/rpm  -v /root/parcel-repo:/opt/cloudera/parcel-repo  registry.cn-shenzhen.aliyuncs.com/shiyongabc/cm
 
 yum install sshpass -y   
 rm -f /root/.ssh/id_rsa /root/.ssh/id_rsa.pub && ssh-keygen -t rsa -f /root/.ssh/id_rsa -P '' -q
