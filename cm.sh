@@ -16,11 +16,10 @@ nodes_hostname=(
 etc_hosts="echo -e '
 127.0.0.1       localhost.localdomain  localhost
 
-172.16.105.230  ntp-master.localdomain ntp-master
-172.16.105.231  node1.localdomain      node1
-172.16.105.232  node2.localdomain      node2
-172.16.105.233  node3.localdomain      node3
-172.16.105.234  node4.localdomain      node4
+220.197.198.85  ntp-master.localdomain ntp-master
+220.197.198.98  node1.localdomain      node1
+112.74.186.73  node2.localdomain      node2
+
 '>/etc/hosts"
 
 nodes_pwd=($*)
