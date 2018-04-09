@@ -1,20 +1,16 @@
 #!/bin/bash
 
-ntp_master='172.16.105.230'
+ntp_master='220.197.198.85'
 ntp_master_hostname='ntp-master'
 nodes_ip=(
-'172.16.105.230'
-'172.16.105.231'
-'172.16.105.232'
-'172.16.105.233'
-'172.16.105.234'
+'220.197.198.85'
+'220.197.198.98'
+'112.74.186.73'
 )
 nodes_hostname=(
 'ntp-master'
 'node1'
 'node2'
-'node3'
-'node4'
 )
 
 etc_hosts="echo -e '
