@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ntp_master='220.197.198.85'
+ntp_master='220.197.198.98'
 ntp_master_hostname='ntp-master'
 nodes_ip=(
 '220.197.198.85'
