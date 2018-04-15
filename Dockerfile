@@ -13,9 +13,9 @@ RUN CM_VER=5.5.0 && MYSQL_VER=5.1.45 && apk --update add --no-cache wget curl &&
  
  
 
-RUN CDH_VER=5.13.1 && mkdir -p /parcel && cd /parcel \
- && wget -t 10  --retry-connrefused http://archive.cloudera.com/cdh5/parcels/${CDH_VER}/CDH-${CDH_VER}-1.cdh${CDH_VER}.p0.2-el7.parcel  \
- && wget -t 10  --retry-connrefused http://archive.cloudera.com/cdh5/parcels/${CDH_VER}/CDH-${CDH_VER}-1.cdh${CDH_VER}.p0.2-el7.parcel.sha1  \
+RUN CDH_VER=5.5.0 && mkdir -p /parcel && cd /parcel \
+ && wget -t 10  --retry-connrefused http://archive.cloudera.com/cdh5/parcels/${CDH_VER}/CDH-${CDH_VER}-1.cdh${CDH_VER}.p0.8-el7.parcel  \
+ && wget -t 10  --retry-connrefused http://archive.cloudera.com/cdh5/parcels/${CDH_VER}/CDH-${CDH_VER}-1.cdh${CDH_VER}.p0.8-el7.parcel.sha1  \
  && wget -t 10  --retry-connrefused http://archive.cloudera.com/cdh5/parcels/${CDH_VER}/manifest.json  \
  
  && apk del wget
