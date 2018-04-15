@@ -1,14 +1,14 @@
 #!/bin/bash
 
 ntp_master='220.197.198.85'
-ntp_master_hostname='ntp-master'
+ntp_master_hostname='master'
 nodes_ip=(
 '220.197.198.85'
 '220.197.198.98'
 '112.74.186.73'
 )
 nodes_hostname=(
-'ntp-master'
+'master'
 'node1'
 'node2'
 )
@@ -16,9 +16,9 @@ nodes_hostname=(
 etc_hosts="echo -e '
 127.0.0.1       localhost.localdomain  localhost
 
-220.197.198.85  ntp-master.localdomain ntp-master
-220.197.198.98  node1.localdomain      node1
-112.74.186.73  node2.localdomain      node2
+220.197.198.85  master.vimi8.com   master
+220.197.198.98  node1.vimi8.com     node1
+112.74.186.73  node2.vimi8.com      node2
 
 '>/etc/hosts"
 
