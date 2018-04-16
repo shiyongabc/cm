@@ -1,20 +1,31 @@
-1 æ‹‰å–é•œåƒ(é•œåƒå†…åŒ…å«cmçš„tar.gzæ–‡ä»¶å’Œcdhçš„parcel-repo)
+# 1 À­È¡¾µÏñ(¾µÏñÄÚ°üº¬cmµÄtar.gzÎÄ¼şºÍcdhµÄparcel-repo)
+```
 docker pull registry.cn-shenzhen.aliyuncs.com/xuybin/cm
-å¯ç¦»çº¿å¯¼å…¥é•œåƒ
+```
+### ¿ÉÀëÏßµ¼Èë¾µÏñ 
+```
 docker save registry.cn-shenzhen.aliyuncs.com/xuybin/cm > cm.tar
 docker load < cm.tar
-æ‰€æœ‰èŠ‚ç‚¹
+```
+### ËùÓĞ½Úµã
+```
 echo -e '
 Host *
 UserKnownHostsFile /dev/null
 StrictHostKeyChecking no
 LogLevel quiet
 '>/root/.ssh/config
-2 ç¼–è¾‘é›†ç¾¤èŠ‚ç‚¹ipå’Œhostnameå,ä¿å­˜æ‰§è¡Œ
+```
+
+# 2 ±à¼­¼¯Èº½ÚµãipºÍhostnameºó,±£´æÖ´ĞĞ
+```
 wget https://raw.githubusercontent.com/xuybin/cm/master/cm.sh && chmod +x cm.sh
 nano cm.sh
 ./cm.sh pwd1 pwd2 ...
-3 é…ç½®ä¸»èŠ‚ç‚¹cloudera-scm-serveréœ€è¦çš„mysqlæ•°æ®åº“
+```
+
+# 3 ÅäÖÃÖ÷½Úµãcloudera-scm-serverĞèÒªµÄmysqlÊı¾İ¿â
+```
 cat /var/log/mysqld.log | grep password
 mysql_secure_installation
 [...]
@@ -71,7 +82,7 @@ mysql> create database amon DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 mysql> exit
 
-/opt/cm-5.5.0/share/cmf/schema/scm_prepare_database.sh mysql scmæ•°æ®åº“ scmæ•°æ®åº“ç”¨æˆ·å scmå¯†ç  -uå…·æœ‰åˆ›å»ºæƒé™çš„mysqlç”¨æˆ·å -på…·æœ‰åˆ›å»ºæƒé™çš„mysqlç”¨æˆ·å¯†ç 
+/opt/cm-5.5.0/share/cmf/schema/scm_prepare_database.sh mysql scmÊı¾İ¿â scmÊı¾İ¿âÓÃ»§Ãû scmÃÜÂë -u¾ßÓĞ´´½¨È¨ÏŞµÄmysqlÓÃ»§Ãû -p¾ßÓĞ´´½¨È¨ÏŞµÄmysqlÓÃ»§ÃÜÂë
 
 mysql -uroot -p
 mysql> SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
@@ -99,21 +110,28 @@ mysql> show databases;
 
 mysql> exit
 
-4 å¯åŠ¨
-ä¸»èŠ‚ç‚¹å¯åŠ¨cloudera-scm-serveråŠæŸ¥çœ‹æ—¥å¿—
+```
+
+# 4 Æô¶¯
+### Ö÷½ÚµãÆô¶¯cloudera-scm-server¼°²é¿´ÈÕÖ¾
+```
 systemctl restart cloudera-scm-server
 systemctl status cloudera-scm-server
 systemctl enable cloudera-scm-server
 tail -f /opt/cm-5.5.0/log/cloudera-scm-server/cloudera-scm-server.log
-æ‰€æœ‰èŠ‚ç‚¹å¯åŠ¨cloudera-scm-agentåŠæŸ¥çœ‹æ—¥å¿—
+```
+### ËùÓĞ½ÚµãÆô¶¯cloudera-scm-agent¼°²é¿´ÈÕÖ¾
+```
 systemctl restart cloudera-scm-agent
 systemctl status cloudera-scm-agent
 systemctl enable cloudera-scm-agent
 tail -f /opt/cm-5.5.0/log/cloudera-scm-agent/cloudera-scm-agent.log
-5 ä½¿ç”¨admin:adminç™»é™†http://ä¸»èŠ‚ç‚¹:7180/
-é€‰æ‹© parcelsæ¨¡å¼,æœ¬åœ°è·¯å¾„ /opt/cloudera/parcel-repo
+```
+# 5 Ê¹ÓÃadmin:adminµÇÂ½http://Ö÷½Úµã:7180/
+Ñ¡Ôñ parcelsÄ£Ê½,±¾µØÂ·¾¶ /opt/cloudera/parcel-repo
 
-6 å®‰è£…å¤±è´¥æˆ–é‡è£…æ¸…ç†
+# 6 °²×°Ê§°Ü»òÖØ×°ÇåÀí
+```
 systemctl stop cloudera-scm-agent &&  systemctl disable cloudera-scm-agent && systemctl stop cloudera-scm-server &&  systemctl disable cloudera-scm-server
 
 rpm -qa |grep cloudera |xargs yum remove -y
@@ -132,3 +150,4 @@ cd /etc/rc.d/rc5.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 cd /etc/rc.d/rc6.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 find / -path *cloudera*
 find / -path *cm-5.5.0*
+```
