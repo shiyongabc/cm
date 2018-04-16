@@ -12,9 +12,9 @@ nodes_hostname=(
 )
 
 etc_hosts="echo -e '
-127.0.0.1       localhost.localdomain  localhost
-220.197.198.85  master.localdomain      master
-220.197.198.98  node1.localdomain       node1
+127.0.0.1       localhost.master
+220.197.198.85  master
+220.197.198.98  node1
 
 '>/etc/hosts"
 
@@ -138,10 +138,11 @@ for i in "${!nodes_ip[@]}"; do
       && ${etc_rclocal} && chmod +x /etc/rc.d/rc.local  && echo never > /sys/kernel/mm/transparent_hugepage/defrag && echo never > /sys/kernel/mm/transparent_hugepage/enabled \
       && ${etc_sysctlconf} && sysctl -p \
       && mkdir -p /opt/cloudera/rpm  /var/spool/cron\
+      && systemctl restart network
     "
     scp /root/rpm/*  ${nodes_ip[$i]}:/opt/cloudera/rpm/
     ssh ${nodes_ip[$i]} "useradd -r -M -d /opt/cm-5.5.0/run/cloudera-scm-server  -s /sbin/nologin -c 'Cloudera Manager' cloudera-scm"
-    
+
     ssh ${nodes_ip[$i]} "\
     	tar zxf /opt/cloudera/rpm/cloudera-manager-centos7.tar.gz -C /opt/ \
     	&& rm -rf /etc/init.d/cloudera-scm-server /etc/init.d/cloudera-scm-agent \
