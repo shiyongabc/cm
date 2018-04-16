@@ -138,7 +138,6 @@ for i in "${!nodes_ip[@]}"; do
       && ${etc_rclocal} && chmod +x /etc/rc.d/rc.local  && echo never > /sys/kernel/mm/transparent_hugepage/defrag && echo never > /sys/kernel/mm/transparent_hugepage/enabled \
       && ${etc_sysctlconf} && sysctl -p \
       && mkdir -p /opt/cloudera/rpm  /var/spool/cron\
-      && systemctl restart network
     "
     scp /root/rpm/*  ${nodes_ip[$i]}:/opt/cloudera/rpm/
     ssh ${nodes_ip[$i]} "useradd -r -M -d /opt/cm-5.5.0/run/cloudera-scm-server  -s /sbin/nologin -c 'Cloudera Manager' cloudera-scm"
