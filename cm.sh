@@ -5,20 +5,16 @@ ntp_master_hostname='master'
 nodes_ip=(
 '220.197.198.85'
 '220.197.198.98'
-'112.74.186.73'
 )
 nodes_hostname=(
 'master'
 'node1'
-'node2'
 )
 
 etc_hosts="echo -e '
 127.0.0.1       localhost.localdomain  localhost
-
-220.197.198.85  master.vimi8.com   master
-220.197.198.98  node1.vimi8.com     node1
-112.74.186.73  node2.vimi8.com      node2
+220.197.198.85  master.localdomain      master
+220.197.198.98  node1.localdomain       node1
 
 '>/etc/hosts"
 
