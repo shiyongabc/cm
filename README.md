@@ -1,13 +1,13 @@
-# 1 À­È¡¾µÏñ(¾µÏñÄÚ°üº¬cmµÄtar.gzÎÄ¼þºÍcdhµÄparcel-repo)
+# 1 ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½cmï¿½ï¿½tar.gzï¿½Ä¼ï¿½ï¿½ï¿½cdhï¿½ï¿½parcel-repo)
 ```
 docker pull registry.cn-shenzhen.aliyuncs.com/xuybin/cm
 ```
-### ¿ÉÀëÏßµ¼Èë¾µÏñ 
+### ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ë¾µï¿½ï¿½ 
 ```
 docker save registry.cn-shenzhen.aliyuncs.com/xuybin/cm > cm.tar
 docker load < cm.tar
 ```
-### ËùÓÐ½Úµã
+### ï¿½ï¿½ï¿½Ð½Úµï¿½
 ```
 echo -e '
 Host *
@@ -17,14 +17,14 @@ LogLevel quiet
 '>/root/.ssh/config
 ```
 
-# 2 ±à¼­¼¯Èº½ÚµãipºÍhostnameºó,±£´æÖ´ÐÐ
+# 2 ï¿½à¼­ï¿½ï¿½Èºï¿½Úµï¿½ipï¿½ï¿½hostnameï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½
 ```
 wget https://raw.githubusercontent.com/xuybin/cm/master/cm.sh && chmod +x cm.sh
 nano cm.sh
 ./cm.sh pwd1 pwd2 ...
 ```
 
-# 3 ÅäÖÃÖ÷½Úµãcloudera-scm-serverÐèÒªµÄmysqlÊý¾Ý¿â
+# 3 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½cloudera-scm-serverï¿½ï¿½Òªï¿½ï¿½mysqlï¿½ï¿½ï¿½Ý¿ï¿½
 ```
 cat /var/log/mysqld.log | grep password
 mysql_secure_installation
@@ -82,7 +82,7 @@ mysql> create database amon DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 mysql> exit
 
-/opt/cm-5.13.1/share/cmf/schema/scm_prepare_database.sh mysql scmÊý¾Ý¿â scmÊý¾Ý¿âÓÃ»§Ãû scmÃÜÂë -u¾ßÓÐ´´½¨È¨ÏÞµÄmysqlÓÃ»§Ãû -p¾ßÓÐ´´½¨È¨ÏÞµÄmysqlÓÃ»§ÃÜÂë
+/opt/cm-5.5.0/share/cmf/schema/scm_prepare_database.sh mysql scmï¿½ï¿½ï¿½Ý¿ï¿½ scmï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ scmï¿½ï¿½ï¿½ï¿½ -uï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½È¨ï¿½Þµï¿½mysqlï¿½Ã»ï¿½ï¿½ï¿½ -pï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½È¨ï¿½Þµï¿½mysqlï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
 
 mysql -uroot -p
 mysql> SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
@@ -112,25 +112,25 @@ mysql> exit
 
 ```
 
-# 4 Æô¶¯
-### Ö÷½ÚµãÆô¶¯cloudera-scm-server¼°²é¿´ÈÕÖ¾
+# 4 ï¿½ï¿½ï¿½ï¿½
+### ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½cloudera-scm-serverï¿½ï¿½ï¿½é¿´ï¿½ï¿½Ö¾
 ```
 systemctl restart cloudera-scm-server
 systemctl status cloudera-scm-server
 systemctl enable cloudera-scm-server
-tail -f /opt/cm-5.13.1/log/cloudera-scm-server/cloudera-scm-server.log
+tail -f /opt/cm-5.5.0/log/cloudera-scm-server/cloudera-scm-server.log
 ```
-### ËùÓÐ½ÚµãÆô¶¯cloudera-scm-agent¼°²é¿´ÈÕÖ¾
+### ï¿½ï¿½ï¿½Ð½Úµï¿½ï¿½ï¿½ï¿½ï¿½cloudera-scm-agentï¿½ï¿½ï¿½é¿´ï¿½ï¿½Ö¾
 ```
 systemctl restart cloudera-scm-agent
 systemctl status cloudera-scm-agent
 systemctl enable cloudera-scm-agent
-tail -f /opt/cm-5.13.1/log/cloudera-scm-agent/cloudera-scm-agent.log
+tail -f /opt/cm-5.5.0/log/cloudera-scm-agent/cloudera-scm-agent.log
 ```
-# 5 Ê¹ÓÃadmin:adminµÇÂ½http://Ö÷½Úµã:7180/
-Ñ¡Ôñ parcelsÄ£Ê½,±¾µØÂ·¾¶ /opt/cloudera/parcel-repo
+# 5 Ê¹ï¿½ï¿½admin:adminï¿½ï¿½Â½http://ï¿½ï¿½ï¿½Úµï¿½:7180/
+Ñ¡ï¿½ï¿½ parcelsÄ£Ê½,ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ /opt/cloudera/parcel-repo
 
-# 6 °²×°Ê§°Ü»òÖØ×°ÇåÀí
+# 6 ï¿½ï¿½×°Ê§ï¿½Ü»ï¿½ï¿½ï¿½×°ï¿½ï¿½ï¿½ï¿½
 ```
 systemctl stop cloudera-scm-agent &&  systemctl disable cloudera-scm-agent && systemctl stop cloudera-scm-server &&  systemctl disable cloudera-scm-server
 
@@ -138,7 +138,7 @@ rpm -qa |grep cloudera |xargs yum remove -y
 rpm -qa |grep postgresql |xargs yum remove -y 
 rpm -qa |grep oracle-j2sdk |xargs yum remove -y
 rpm -qa |grep mysql |xargs yum remove -y && rm -rf /etc/mysql /var/lib/mysql /var/cache/yum/x86_64/7/mysql* /var/lib/yum/repos/x86_64/7/mysql* /var/log/mysqld.log
-ps -ef |grep /opt/cm-5.13.1/
+ps -ef |grep /opt/cm-5.5.0/
 kill -9 ***
 rm -rf /etc/init.d/cloudera-* /etc/default/cloudera-* /etc/yum.repos.d/cloudera* && yum clean all && rm -rf /var/cache/yum/yum/x86_64/7/cloudera* /var/lib/yum/repos/x86_64/7/cloudera* /var/cache/yum/x86_64/7/cloudera-*
 rm -rf /opt/cm-* /usr/share/cmf /var/lib/cloudera* /var/cache/yum/x86_64/6/cloudera* /var/log/cloudera* /var/run/cloudera* /etc/cloudera* /opt/cloudera*  /etc/rc.d/rc0.d/K10cloudera-* /etc/rc.d/init.d/cloudera* /tmp/*  
@@ -149,5 +149,5 @@ cd /etc/rc.d/rc4.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 cd /etc/rc.d/rc5.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 cd /etc/rc.d/rc6.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 find / -path *cloudera*
-find / -path *cm-5.13.1*
+find / -path *cm-5.5.0*
 ```
