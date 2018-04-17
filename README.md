@@ -82,7 +82,7 @@ mysql> create database amon DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
 
 mysql> exit
 
-/opt/cm-5.5.0/share/cmf/schema/scm_prepare_database.sh mysql scm数据库 scm数据库用户名 scm密码 -u具有创建权限的mysql用户名 -p具有创建权限的mysql用户密码
+/opt/cm-5.10.0/share/cmf/schema/scm_prepare_database.sh mysql scm数据库 scm数据库用户名 scm密码 -u具有创建权限的mysql用户名 -p具有创建权限的mysql用户密码
 
 mysql -uroot -p
 mysql> SELECT DISTINCT CONCAT('User: ''',user,'''@''',host,''';') AS query FROM mysql.user;
@@ -118,14 +118,14 @@ mysql> exit
 systemctl restart cloudera-scm-server
 systemctl status cloudera-scm-server
 systemctl enable cloudera-scm-server
-tail -f /opt/cm-5.5.0/log/cloudera-scm-server/cloudera-scm-server.log
+tail -f /opt/cm-5.10.0/log/cloudera-scm-server/cloudera-scm-server.log
 ```
 ### 所有节点启动cloudera-scm-agent及查看日志
 ```
 systemctl restart cloudera-scm-agent
 systemctl status cloudera-scm-agent
 systemctl enable cloudera-scm-agent
-tail -f /opt/cm-5.5.0/log/cloudera-scm-agent/cloudera-scm-agent.log
+tail -f /opt/cm-5.10.0/log/cloudera-scm-agent/cloudera-scm-agent.log
 ```
 # 5 使用admin:admin登陆http://主节点:7180/
 选择 parcels模式,本地路径 /opt/cloudera/parcel-repo
@@ -138,7 +138,7 @@ rpm -qa |grep cloudera |xargs yum remove -y
 rpm -qa |grep postgresql |xargs yum remove -y 
 rpm -qa |grep oracle-j2sdk |xargs yum remove -y
 rpm -qa |grep mysql |xargs yum remove -y && rm -rf /etc/mysql /var/lib/mysql /var/cache/yum/x86_64/7/mysql* /var/lib/yum/repos/x86_64/7/mysql* /var/log/mysqld.log
-ps -ef |grep /opt/cm-5.5.0/
+ps -ef |grep /opt/cm-5.10.0/
 kill -9 ***
 rm -rf /etc/init.d/cloudera-* /etc/default/cloudera-* /etc/yum.repos.d/cloudera* && yum clean all && rm -rf /var/cache/yum/yum/x86_64/7/cloudera* /var/lib/yum/repos/x86_64/7/cloudera* /var/cache/yum/x86_64/7/cloudera-*
 rm -rf /opt/cm-* /usr/share/cmf /var/lib/cloudera* /var/cache/yum/x86_64/6/cloudera* /var/log/cloudera* /var/run/cloudera* /etc/cloudera* /opt/cloudera*  /etc/rc.d/rc0.d/K10cloudera-* /etc/rc.d/init.d/cloudera* /tmp/*  
@@ -149,5 +149,5 @@ cd /etc/rc.d/rc4.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 cd /etc/rc.d/rc5.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 cd /etc/rc.d/rc6.d/ && rm -rf K10cloudera-scm-agent K10cloudera-scm-server
 find / -path *cloudera*
-find / -path *cm-5.5.0*
+find / -path *cm-5.10.0*
 ```
