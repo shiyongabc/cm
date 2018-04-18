@@ -13,13 +13,15 @@ nodes_hostname=(
 'node2'
 )
 
-etc_hosts="echo -e '
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
-220.197.198.85  master
-220.197.198.98  node1
-112.74.186.73   node2
+etc_hosts="echo -e '
+127.0.0.1          localhost  localhost.localdomain
+
+220.197.198.85      master
+220.197.198.98      node1
+112.74.186.73       node2
+
+
 '>/etc/hosts"
 
 nodes_pwd=($*)
@@ -85,7 +87,6 @@ SYNC_HWCLOCK=yes
 '>/etc/sysconfig/ntpdate"
 
 etc_mycnf="sed -i '/^# innodb_buffer_pool_size = 128M/ s:.*:\
-validate_password = off\n\
 key_buffer_size = 32M\n\
 max_allowed_packet = 32M\n\
 thread_stack = 256K\n\
