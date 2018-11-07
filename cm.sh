@@ -1,11 +1,11 @@
 #!/bin/bash
 
-ntp_master='220.197.198.85'
+ntp_master='192.168.1.119'
 ntp_master_hostname='master'
 nodes_ip=(
-'220.197.198.85'
-'220.197.198.98'
-'112.74.186.73'
+'192.168.1.119'
+'192.168.1.122'
+'192.168.1.123'
 )
 nodes_hostname=(
 'master'
@@ -17,9 +17,9 @@ nodes_hostname=(
 etc_hosts="echo -e '
 127.0.0.1          localhost  localhost.localdomain
 
-220.197.198.85      master
-220.197.198.98      node1
-112.74.186.73       node2
+192.168.1.119      master
+192.168.1.122      node1
+192.168.1.123       node2
 
 
 '>/etc/hosts"
