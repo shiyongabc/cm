@@ -4,7 +4,7 @@ FROM httpd:alpine
 VOLUME ["/opt/cloudera/parcel-repo"]
 VOLUME ["/opt/cloudera/rpm"]
 
-RUN CM_VER=5.10.0 && MYSQL_VER=5.1.45 && apk --update add --no-cache wget curl && mkdir -p /rpm && cd /rpm \
+RUN CM_VER=5.10.0 && MYSQL_VER=5.1.47 && apk --update add --no-cache wget curl && mkdir -p /rpm && cd /rpm \
  && wget -t 10  --retry-connrefused -O "cloudera-manager-centos7.tar.gz" https://archive.cloudera.com/cm5/cm/5/cloudera-manager-centos7-cm${CM_VER}_x86_64.tar.gz  \
  && wget -t 10  --retry-connrefused https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-${MYSQL_VER}.tar.gz \
  && tar zxf mysql-connector-java-${MYSQL_VER}.tar.gz && mv -f mysql-connector-java-5.1.45/mysql-connector-java-${MYSQL_VER}-bin.jar ./mysql-connector-java.jar &&rm -rf mysql-connector-java-${MYSQL_VER} mysql-connector-java-${MYSQL_VER}.tar.gz \
