@@ -8,7 +8,7 @@ RUN CM_VER=5.10.0 && MYSQL_VER=5.1.47 && apk --update add --no-cache wget curl &
  && wget -t 10  --retry-connrefused -O "cloudera-manager-centos7.tar.gz" https://archive.cloudera.com/cm5/cm/5/cloudera-manager-centos7-cm${CM_VER}_x86_64.tar.gz  \
  && wget -t 10  --retry-connrefused https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-${MYSQL_VER}.tar.gz \
  && tar zxf mysql-connector-java-${MYSQL_VER}.tar.gz && mv -f mysql-connector-java-${MYSQL_VER}/mysql-connector-java-${MYSQL_VER}-bin.jar ./mysql-connector-java.jar &&rm -rf mysql-connector-java-${MYSQL_VER} mysql-connector-java-${MYSQL_VER}.tar.gz \
- && curl  -o jdk8.rpm --insecure --junk-session-cookies --location --remote-name --silent --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u161-b12/2f38c3b165be4555a1fa6e98c45e0808/jdk-8u161-linux-x64.rpm \
+ && curl  -o jdk8.rpm --insecure --junk-session-cookies --location --remote-name --silent --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/8u191-b12/2787e4a523244c269598db4e85c51e0c/jdk-8u191-linux-x64.rpm \
  && apk del curl
  
  
